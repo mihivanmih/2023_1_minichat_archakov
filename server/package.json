@@ -2,6 +2,7 @@
   "name": "minichatarchakov",
   "version": "0.1.0",
   "private": true,
+  "type": "module",
   "dependencies": {
     "@testing-library/jest-dom": "^5.16.5",
     "@testing-library/react": "^13.4.0",
@@ -21,7 +22,6 @@
     "eject": "react-scripts eject",
     "server": "node server/server.js"
   },
-  "proxy": "http://localhost:8888",
   "eslintConfig": {
     "extends": [
       "react-app",
