@@ -1,5 +1,4 @@
 import React, { useState } from 'react'
-import socket from '../../socket'
 import axios from 'axios'
 
 const AuthorizationMain = ({onLogin}) => {
@@ -12,11 +11,15 @@ const AuthorizationMain = ({onLogin}) => {
         if (!roomId || !userName) {
             return alert('Неверные данные')
         }
-        setIsLoading(true)
-        await axios.post('/rooms', {
+        
+        const obj = {
             roomId,
             userName
-        }).then(onLogin)
+        }
+        
+        setIsLoading(true)
+        await axios.post('/rooms', obj)
+        onLogin(obj)
     }
     
     return (

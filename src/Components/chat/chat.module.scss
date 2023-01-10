@@ -1,0 +1,41 @@
+.allblock {
+   margin-top: 200px;
+}
+
+
+.users {
+    height: 500px;
+    background: #f4fffd;
+    border: 1px solid #e0f3f7 !important;
+    padding: 20px;
+}
+
+.chat {
+    padding: 50px;
+    height: 500px;
+    border: 1px solid #e0f3f7 !important;
+}
+
+.blockMessage {
+    margin-bottom: 20px;
+
+    .message {
+        background: #b8e0f9;
+        padding: 10px 20px;
+        border-radius: 10px;
+    }
+    .user {
+        font-size: 12px;
+        color: #ccc;
+    }
+}
+
+.send {
+    position: absolute;
+    bottom: 20px;
+    width: calc(100% - 100px);
+
+    textarea {
+        width: 100%;
+    }
+}

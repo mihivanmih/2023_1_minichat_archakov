@@ -1,11 +1,28 @@
-export default (state, action) => {
+const reduser = (state, action) => {
     switch (action.type) {
-        case 'IS_AUTH':
+        case 'JOINED':
             return {
                 ...state,
-                isAuth: action.payload
+                joined: true,
+                roomId: action.payload.roomId,
+                userName: action.payload.userName
             }
+            
+        case 'SET_USERS':
+            return {
+                ...state,
+                users: action.payload
+            }
+            
+        case 'SET_MESSAGES':
+            return {
+                ...state,
+                messages: action.payload
+            }
+            
         default:
             return state;
     }
 }
+
+export default reduser
