@@ -14,11 +14,19 @@ const reduser = (state, action) => {
                 users: action.payload
             }
             
-        case 'SET_MESSAGES':
+        case 'SET_DATA':
             return {
                 ...state,
-                messages: action.payload
+                users: action.payload.users,
+                messages: action.payload.messages
             }
+            
+        case 'NEW_MESSAGE':
+            return {
+                ...state,
+                messages: [...state.messages, action.payload]
+            }
+            console.log("xxxvcbcvbnrgngr")
             
         default:
             return state;

@@ -25,7 +25,13 @@ function App() {
         // emit запрос сокета на бек
         socket.emit('ROOM:JOIN', obj)
         const { data } = await axios.get(`/rooms/${obj.roomId}`)
-        setUsers(data.users)
+        
+        // что бы новый пользователь видел старые сообщения
+        dispatch({
+            type: 'SET_DATA',
+            payload: data
+        })
+        //setUsers(data.users)
     }
     
     const setUsers = (users) => {
@@ -35,18 +41,25 @@ function App() {
         })
     }
     
+    const addMessage = (message) => {
+        dispatch({
+            type: 'NEW_MESSAGE',
+            payload: message
+        })
+    }
+    
     useEffect(() => {
         socket.on('ROOM:SET_USERS', setUsers)
+        socket.on('ROOM:NEW_MESSAGE', message => {
+            addMessage(message)
+        })
     }, [])
-    
-    
-
     
     return (
     <div className="container">
         <div className="row">
             <div className="col d-flex justify-content-center ">
-                { !state.joined ? <AuthorizationMain onLogin={ onLogin }/> : <Chat {...state} /> }
+                { !state.joined ? <AuthorizationMain onLogin={ onLogin }/> : <Chat {...state} onAddMessage={addMessage}/> }
             </div>
         </div>
     </div>
